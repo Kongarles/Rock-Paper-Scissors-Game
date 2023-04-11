@@ -5,49 +5,55 @@ action_list = ['rock', 'paper', 'scissors']
 computer_score = 0
 player_score = 0
 
-total_rounds = input("How many rounds do you want to play? Please enter a number here: ")
+while True:
+    total_rounds = input("How many rounds do you want to play? Please enter a number here: ")
+    try:
+        total_rounds = int(total_rounds)
+        break
+    except ValueError:
+        print("Please enter a valid integer.")
 
 round_counter = 0
 
 while True:
     round_counter += 1
-    print("Round number:", round_counter)
-    
+    print("\nRound number:", round_counter)
+
     computer_choice = random.choice(action_list)
 
-    player_choice = input("Please choose your aciton: ")
+    player_choice = input("Please choose your action: ")
 
     print("Computer:", computer_choice)
     print("Player:", player_choice)
 
     if computer_choice == player_choice:
-        print("Tie! Both players chose the same action.\n")
-    
+        print("Tie! Both players chose the same action.")
+
     elif computer_choice == 'paper':
-        if player_choice =='rock':
-            print("Winner is: Computer\n")
+        if player_choice == 'rock':
+            print("Winner is: Computer")
             computer_score += 1
         else:
-            print("Winner is: Player\n")
+            print("Winner is: Player")
             player_score += 1
 
     elif computer_choice == 'rock':
         if player_choice == 'paper':
-            print("Winner is: Player\n")
+            print("Winner is: Player")
             player_score += 1
         else:
-            print("Winner is: Computer\n")
+            print("Winner is: Computer")
             computer_score += 1
 
     elif computer_choice == 'scissors':
         if player_choice == 'paper':
-            print("Winner is: Computer\n")
+            print("Winner is: Computer")
             computer_score += 1
         else:
-            print("Winner is: Player\n")
+            print("Winner is: Player")
             player_score += 1
 
-    if round_counter == int(total_rounds):
+    if round_counter == total_rounds:
         break
 
 if computer_score == player_score:
